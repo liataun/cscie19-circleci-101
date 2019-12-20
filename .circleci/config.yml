@@ -1,22 +1,22 @@
 version: 2.1
 jobs:
-  one:
+  build:
     docker: 
       - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
     steps:
       - checkout # check out the code in the project directory
       - run: echo "First hello" # run the `echo` command
       - run: sleep 20
-  two:
+  test:
     docker: 
       - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
     steps:
       - checkout # check out the code in the project directory
       - run: echo "second nihao" # run the `echo` command
       - run: sleep 10
-  workflows:
-    version: 2.1
-    one_and_two:
-      jobs:
-        - one
-        - two
+workflows:
+  version: 2.1
+  build_and_test:
+    jobs:
+      - build
+      - test
