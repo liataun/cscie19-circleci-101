@@ -9,4 +9,12 @@ jobs:
           name: The First Step
           command: |
             echo 'Hello World!'
-            notacommand
+  build:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run:
+          name: The Second Step
+          command: |
+            echo 'Hello World!'
